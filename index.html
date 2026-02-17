@@ -34,38 +34,46 @@
       backdrop-filter: blur(6px);
     }
 
+    /* شريط الإدخال + الأزرار */
     .controls{
       display:flex;
-      gap:10px;
+      gap:14px;              /* مسافة واضحة بين الجانبين */
       flex-wrap:wrap;
-      align-items:end;
-      justify-content:space-between;
+      align-items:flex-end;
     }
 
-    /* هذا اللي يحرك مجموعة الإدخال + الأزرار "يسار شوي" */
+    /* المجموعة: الحقل + الأزرار */
     .controls .left{
       display:flex;
-      gap:10px;
+      gap:12px;              /* يمنع الالتصاق */
       flex-wrap:wrap;
-      align-items:end;
-      margin-inline-start: 18px; /* غيّرها 10/25 حسب اللي تبيه */
+      align-items:flex-end;
+      flex: 1 1 620px;       /* تخلي المجموعة تتمدد وتلف بالجوال */
+      min-width: 280px;
+    }
+
+    /* بلوك الإدخال لوحده ياخذ أكبر مساحة */
+    .field{
+      flex: 1 1 360px;       /* خلي الحقل يتمدد */
+      min-width: 240px;
     }
 
     label{ display:block; font-size:14px; opacity:.9; margin-bottom:6px }
 
     input{
-      width:min(420px, 100%);
-      padding:10px 12px;
-      border-radius:10px;
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
       border:1px solid rgba(255,255,255,.18);
       background:rgba(0,0,0,.22);
       color:#fff;
       outline:none;
+      box-sizing:border-box;
     }
 
     button{
-      padding:10px 14px;
-      border-radius:10px;
+      padding:12px 16px;
+      border-radius:12px;
       border:1px solid rgba(255,255,255,.18);
       background:rgba(232,180,122,.16);
       color:#fff;
@@ -78,14 +86,9 @@
 
     .grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1fr;
       gap:14px;
       align-items:start;
-    }
-
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-      .controls .left{ margin-inline-start: 0; } /* بالجوال نخليها طبيعي */
     }
 
     canvas{
@@ -106,17 +109,13 @@
     <div class="card">
       <div class="controls">
         <div class="left">
-          <div>
+          <div class="field">
             <label for="name">اكتب اسمك</label>
             <input id="name" type="text" placeholder="مثال: محمد" />
           </div>
+
           <button id="renderBtn">عرض بالاسم</button>
           <button id="downloadBtn">حفظ PNG</button>
-        </div>
-
-        <!-- خليته موجود حتى لو فاضي -->
-        <div style="opacity:.9;font-size:13px;line-height:1.6;text-align:left" dir="ltr">
-          <!-- تقدر تكتب هنا شيء لو تبي -->
         </div>
       </div>
     </div>
@@ -129,7 +128,7 @@
   </div>
 
 <script>
-  // مسار صورتك المحلية (غير الامتداد إذا لازم)
+  // مسار صورتك المحلية (غيّر الامتداد إذا لازم)
   const LOCAL_IMAGE_SRC = "images/im1.png";
 
   // إعدادات الاسم
@@ -150,11 +149,9 @@
   function drawBase() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // خلفية احتياطية لو الصورة تأخرت
     ctx.fillStyle = "#0b3f46";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // رسم "Cover" داخل 1024x1024
     const cw = canvas.width, ch = canvas.height;
     const iw = img.naturalWidth || 1024;
     const ih = img.naturalHeight || 1024;
@@ -177,16 +174,13 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // ظل خفيف عشان يبان فوق الخلفية
     ctx.shadowColor = "rgba(0,0,0,0.35)";
     ctx.shadowBlur = 6;
 
     ctx.fillStyle = NAME_COLOR;
     ctx.font = NAME_FONT;
 
-    const x = canvas.width / 2;
-    ctx.fillText(safe, x, NAME_Y);
-
+    ctx.fillText(safe, canvas.width / 2, NAME_Y);
     ctx.restore();
   }
 
