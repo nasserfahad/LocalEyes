@@ -21,11 +21,7 @@
       color:#fff;
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
     }
-    .wrap{
-      width:min(980px, 100%);
-      display:grid;
-      gap:14px;
-    }
+    .wrap{ width:min(980px, 100%); display:grid; gap:14px; }
     .card{
       background:var(--panel);
       border:1px solid var(--border);
@@ -40,18 +36,8 @@
       align-items:end;
       justify-content:space-between;
     }
-    .controls .left{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:end;
-    }
-    label{
-      display:block;
-      font-size:14px;
-      opacity:.9;
-      margin-bottom:6px
-    }
+    .controls .left{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
+    label{ display:block; font-size:14px; opacity:.9; margin-bottom:6px }
     input{
       width:min(420px, 100%);
       padding:10px 12px;
@@ -71,21 +57,9 @@
       white-space:nowrap;
     }
     button:hover{ background:rgba(232,180,122,.24) }
-    .hint{
-      margin:10px 0 0;
-      font-size:13px;
-      opacity:.85;
-      line-height:1.7;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-      align-items:start;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+    .hint{ margin:10px 0 0; font-size:13px; opacity:.85; line-height:1.7; }
+    .grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start; }
+    @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } }
     canvas{
       width:100%;
       height:auto;
@@ -94,7 +68,6 @@
       border:1px solid var(--border);
       background:#0b3f46;
     }
-    a{ color:#fff; text-decoration:underline; }
     code{ background:rgba(0,0,0,.22); padding:2px 6px; border-radius:6px; }
   </style>
 </head>
@@ -113,16 +86,12 @@
         </div>
 
         <div style="opacity:.9;font-size:13px;line-height:1.6;text-align:left" dir="ltr">
-          Base image:
-          <a href="https://www.genspark.ai/api/files/s/82ZHeJIL" target="_blank" rel="noreferrer">
-            https://www.genspark.ai/api/files/s/82ZHeJIL
-          </a>
+          Image: <code>images/im1.(png|jpg)</code>
         </div>
       </div>
 
       <div class="hint">
         الاسم يُكتب <b>بالنص</b> وتحت الدعاء الأبيض مع <b>مسافة شوي</b> وباللون <code>#E8B47A</code>.
-        إذا واجهت مشكلة حفظ بسبب CORS، قلّي وأعطيك نسخة تدعم رفع الصورة من جهازك بدل الرابط.
       </div>
     </div>
 
@@ -132,28 +101,25 @@
       </div>
 
       <div class="card" style="opacity:.92;line-height:1.9">
-        <div style="font-weight:700;margin-bottom:8px">تعديل المسافة بسرعة</div>
-        <div>مكان الاسم يتحكم فيه المتغير: <code>NAME_Y</code></div>
-        <div>قلّل الرقم ↑ الاسم يصعد، زوّد الرقم ↓ الاسم ينزل.</div>
-        <hr style="border:0;border-top:1px solid rgba(255,255,255,.14);margin:12px 0">
-        <div style="font-weight:700;margin-bottom:8px">المكان الحالي</div>
-        <div>مضبوط على “مسافة شوي” تحت الكلام الأبيض.</div>
+        <div style="font-weight:700;margin-bottom:8px">ملاحظة تشغيل مهمة</div>
+        <div>
+          الأفضل تفتح الصفحة عبر سيرفر محلي (مثل VS Code Live Server).<br>
+          لو فتحتها كملف مباشرة <code>file://</code> ممكن المتصفح يمنع تحميل الصورة أحيانًا.
+        </div>
       </div>
     </div>
   </div>
 
 <script>
-  // صورة الخلفية (التصميم الأساسي)
-  const BASE_IMAGE_URL = "https://www.genspark.ai/api/files/s/82ZHeJIL"; // [Source](https://www.genspark.ai/api/files/s/82ZHeJIL)
+  // ضع صورتك هنا حسب الامتداد الحقيقي:
+  // مثال: "images/im1.png" أو "images/im1.jpg"
+  const LOCAL_IMAGE_SRC = "images/im1.png";
 
-  // إعدادات مكان الاسم
+  // إعدادات الاسم
   const NAME_COLOR = "#E8B47A";
   const NAME_FONT  = "600 56px Tahoma, Arial, system-ui";
-  const NAME_X_ALIGN = "center";
 
-  // "مسافة شوي" تحت الكلام الأبيض:
-  // لو تبغى الاسم أعلى: 805 أو 800
-  // لو تبغى الاسم أوطى: 820 أو 830
+  // "مسافة شوي" تحت الكلام الأبيض (تقدر تعدّلها)
   const NAME_Y = 810;
 
   const canvas = document.getElementById("c");
@@ -163,17 +129,14 @@
   const downloadBtn = document.getElementById("downloadBtn");
 
   const img = new Image();
-  img.crossOrigin = "anonymous";
-  img.src = BASE_IMAGE_URL;
+  img.src = LOCAL_IMAGE_SRC;
 
   function drawBase() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // خلفية احتياطية
     ctx.fillStyle = "#0b3f46";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // رسم الصورة "Cover" داخل 1024x1024
     const cw = canvas.width, ch = canvas.height;
     const iw = img.naturalWidth || 1024;
     const ih = img.naturalHeight || 1024;
@@ -193,31 +156,28 @@
 
     ctx.save();
     ctx.direction = "rtl";
-    ctx.textAlign = NAME_X_ALIGN;
+    ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // ظل خفيف للوضوح فوق الخلفية
     ctx.shadowColor = "rgba(0,0,0,0.35)";
     ctx.shadowBlur = 6;
 
     ctx.fillStyle = NAME_COLOR;
     ctx.font = NAME_FONT;
 
-    const x = canvas.width / 2; // بالنص
-    const y = NAME_Y;           // تحت الكلام الأبيض + مسافة شوي
+    const x = canvas.width / 2;
+    ctx.fillText(safe, x, NAME_Y);
 
-    ctx.fillText(safe, x, y);
     ctx.restore();
   }
 
   async function render() {
-    if (!img.complete) await new Promise(res => img.onload = res);
+    if (!img.complete) await new Promise(res => (img.onload = res));
     drawBase();
     drawName(nameInput.value);
   }
 
   function downloadPNG() {
-    // ملاحظة: لو المصدر ما يسمح CORS ممكن يطلع خطأ (tainted canvas)
     const a = document.createElement("a");
     a.download = "ramadan-name.png";
     a.href = canvas.toDataURL("image/png");
@@ -225,17 +185,16 @@
   }
 
   renderBtn.addEventListener("click", render);
-
-  downloadBtn.addEventListener("click", () => {
-    try {
-      downloadPNG();
-    } catch (e) {
-      alert("تعذر حفظ الصورة بسبب قيود CORS من مصدر الصورة. قلّي وأجهز لك نسخة ترفع الصورة من جهازك وتشتغل 100%.");
-      console.error(e);
-    }
-  });
+  downloadBtn.addEventListener("click", downloadPNG);
 
   img.onload = render;
+  img.onerror = () => {
+    alert(
+      "ما قدرت أحمل الصورة.\n" +
+      "تأكد إن الملف موجود بهذا المسار: " + LOCAL_IMAGE_SRC + "\n" +
+      "وإن الامتداد صحيح (png/jpg)."
+    );
+  };
 </script>
 </body>
 </html>
