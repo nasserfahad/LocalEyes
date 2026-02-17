@@ -5,30 +5,69 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>بطاقة رمضان - إضافة اسم</title>
   <style>
-    :root{ --nameColor:#E8B47A; --panel:rgba(255,255,255,.08); --border:rgba(255,255,255,.14); }
+    :root{
+      --nameColor:#E8B47A;
+      --panel: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.14);
+    }
     body{
-      margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-      padding:22px; background:#062b30; color:#fff;
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:#062b30;
+      color:#fff;
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
     }
     .wrap{ width:min(980px, 100%); display:grid; gap:14px; }
-    .card{ background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px; }
-    .controls{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; justify-content:space-between; }
-    .left{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+      backdrop-filter: blur(6px);
+    }
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:end;
+      justify-content:space-between;
+    }
+    .controls .left{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
     label{ display:block; font-size:14px; opacity:.9; margin-bottom:6px }
     input{
-      width:min(420px,100%); padding:10px 12px; border-radius:10px;
-      border:1px solid rgba(255,255,255,.18); background:rgba(0,0,0,.22); color:#fff; outline:none;
+      width:min(420px, 100%);
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.22);
+      color:#fff;
+      outline:none;
     }
     button{
-      padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18);
-      background:rgba(232,180,122,.16); color:#fff; cursor:pointer; white-space:nowrap;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(232,180,122,.16);
+      color:#fff;
+      cursor:pointer;
+      white-space:nowrap;
     }
     button:hover{ background:rgba(232,180,122,.24) }
     .hint{ margin:10px 0 0; font-size:13px; opacity:.85; line-height:1.7; }
-    .grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:14px; align-items:start; }
-    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
-    canvas{ width:100%; height:auto; display:block; border-radius:14px; border:1px solid var(--border); background:#0b3f46; }
+    .grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start; }
+    @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } }
+    canvas{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#0b3f46;
+    }
     code{ background:rgba(0,0,0,.22); padding:2px 6px; border-radius:6px; }
   </style>
 </head>
@@ -45,12 +84,15 @@
           <button id="renderBtn">عرض بالاسم</button>
           <button id="downloadBtn">حفظ PNG</button>
         </div>
+
         <div style="opacity:.9;font-size:13px;line-height:1.6;text-align:left" dir="ltr">
           Image path: <code>images/im1.(png|jpg|webp)</code>
         </div>
       </div>
+
       <div class="hint">
         الاسم يظهر <b>بالنص</b> تحت الكلام الأبيض مع <b>مسافة شوي</b> وباللون <code>#E8B47A</code>.
+        لتغيير مكان الاسم: قلّل/زوّد رقم <code>NAME_Y</code>.
       </div>
     </div>
 
@@ -58,26 +100,35 @@
       <div class="card">
         <canvas id="c" width="1024" height="1024"></canvas>
       </div>
+
       <div class="card" style="opacity:.92;line-height:1.9">
-        <div style="font-weight:700;margin-bottom:8px">تعديل المسافة</div>
-        <div>غيّر رقم <code>NAME_Y</code>:</div>
-        <div>أقل = الاسم يطلع فوق، أكبر = ينزل تحت.</div>
+        <div style="font-weight:700;margin-bottom:8px">تشغيل سريع</div>
+        <div>رتّب ملفاتك كذا:</div>
+        <div dir="ltr">
+          <code>/index.html</code><br>
+          <code>/images/im1.png</code>
+        </div>
+        <div style="margin-top:10px">
+          إذا ما ظهرت الصورة: غالبًا الامتداد مو <code>png</code>—غيّره في الكود إلى <code>jpg</code> أو <code>webp</code>.
+        </div>
       </div>
     </div>
   </div>
 
 <script>
-  // مهم: حط الامتداد الصحيح لملفك
-  const LOCAL_IMAGE_SRC = "images/im1.png"; // غيّرها إلى jpg/webp إذا لازم
+  // 1) ضع مسار صورتك المحلية هنا (غيّر الامتداد إذا لازم)
+  const LOCAL_IMAGE_SRC = "images/im1.png";
 
+  // 2) إعدادات الاسم (صغّرنا الخط شوي)
   const NAME_COLOR = "#E8B47A";
-  const NAME_FONT  = "600 56px Tahoma, Arial, system-ui";
+  const NAME_FONT  = "600 48px Tahoma, Arial, system-ui"; // كان 56px
 
-  // مسافة شوي تحت الدعاء الأبيض
-  const NAME_Y = 810;
+  // 3) مكان الاسم (نزلناه شوي)
+  const NAME_Y = 835; // كان 810
 
   const canvas = document.getElementById("c");
   const ctx = canvas.getContext("2d");
+
   const nameInput = document.getElementById("name");
   const renderBtn = document.getElementById("renderBtn");
   const downloadBtn = document.getElementById("downloadBtn");
@@ -87,9 +138,12 @@
 
   function drawBase() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // خلفية احتياطية لو الصورة تأخرت
     ctx.fillStyle = "#0b3f46";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // رسم "Cover" داخل 1024x1024
     const cw = canvas.width, ch = canvas.height;
     const iw = img.naturalWidth || 1024;
     const ih = img.naturalHeight || 1024;
@@ -112,18 +166,26 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
+    // ظل خفيف عشان يبان فوق الخلفية
     ctx.shadowColor = "rgba(0,0,0,0.35)";
     ctx.shadowBlur = 6;
 
     ctx.fillStyle = NAME_COLOR;
     ctx.font = NAME_FONT;
 
-    ctx.fillText(safe, canvas.width / 2, NAME_Y);
+    const x = canvas.width / 2;
+    ctx.fillText(safe, x, NAME_Y);
+
     ctx.restore();
   }
 
   async function render() {
-    if (!img.complete) await new Promise(res => (img.onload = res));
+    if (!img.complete) {
+      await new Promise((res, rej) => {
+        img.onload = res;
+        img.onerror = rej;
+      });
+    }
     drawBase();
     drawName(nameInput.value);
   }
@@ -135,14 +197,15 @@
     a.click();
   }
 
-  renderBtn.addEventListener("click", render);
+  renderBtn.addEventListener("click", () => render().catch(() => {}));
   downloadBtn.addEventListener("click", downloadPNG);
 
-  img.onload = render;
+  img.onload = () => render();
   img.onerror = () => {
     alert(
-      "ما قدرت أحمل الصورة من: " + LOCAL_IMAGE_SRC + "\\n" +
-      "تأكد من: 1) الامتداد صحيح 2) الملف داخل مجلد images 3) الاسم مطابق حرفيًا"
+      "ما قدرت أحمل الصورة.\n" +
+      "تأكد من وجود الملف بهذا المسار:\n" + LOCAL_IMAGE_SRC + "\n\n" +
+      "وتأكد من الامتداد (png/jpg/webp)."
     );
   };
 </script>
