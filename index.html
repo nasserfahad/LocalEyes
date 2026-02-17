@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="ar" dir="rtl"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;بطاقة رمضان - إضافة اسم&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--nameColor:#E8B47A;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--panel: rgba(255,255,255,.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border: rgba(255,255,255,.14);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height:100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:22px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#062b30;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.wrap{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:min(980px, 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:var(--panel);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(6px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.controls{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:end;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.controls .left{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:end;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>opacity:.9;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom:6px</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:min(420px, 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(255,255,255,.18);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(0,0,0,.22);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>outline:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(255,255,255,.18);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(232,180,122,.16);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button:hover{ background:rgba(232,180,122,.24) }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hint{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:10px 0 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:13px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>opacity:.85;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height:1.7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1.1fr .9fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:start;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 860px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.grid{ grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height:auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#0b3f46;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a{ color:#fff; text-decoration:underline; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>code{ background:rgba(0,0,0,.22); padding:2px 6px; border-radius:6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label for="name"&gt;اكتب اسمك&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input id="name" type="text" placeholder="مثال: محمد" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button id="renderBtn"&gt;عرض بالاسم&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button id="downloadBtn"&gt;حفظ PNG&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="opacity:.9;font-size:13px;line-height:1.6;text-align:left" dir="ltr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Base image:</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="https://www.genspark.ai/api/files/s/82ZHeJIL" target="_blank" rel="noreferrer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>https://www.genspark.ai/api/files/s/82ZHeJIL</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hint"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>الاسم يُكتب &lt;b&gt;بالنص&lt;/b&gt; وتحت الدعاء الأبيض مع &lt;b&gt;مسافة شوي&lt;/b&gt; وباللون &lt;code&gt;#E8B47A&lt;/code&gt;.</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>إذا واجهت مشكلة حفظ بسبب CORS، قلّي وأعطيك نسخة تدعم رفع الصورة من جهازك بدل الرابط.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="c" width="1024" height="1024"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card" style="opacity:.92;line-height:1.9"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="font-weight:700;margin-bottom:8px"&gt;تعديل المسافة بسرعة&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;مكان الاسم يتحكم فيه المتغير: &lt;code&gt;NAME_Y&lt;/code&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;قلّل الرقم ↑ الاسم يصعد، زوّد الرقم ↓ الاسم ينزل.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;hr style="border:0;border-top:1px solid rgba(255,255,255,.14);margin:12px 0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="font-weight:700;margin-bottom:8px"&gt;المكان الحالي&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;مضبوط على “مسافة شوي” تحت الكلام الأبيض.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">  </span>// صورة الخلفية (التصميم الأساسي)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const BASE_IMAGE_URL = "https://www.genspark.ai/api/files/s/82ZHeJIL"; // [Source](https://www.genspark.ai/api/files/s/82ZHeJIL)</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">  </span>// إعدادات مكان الاسم</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const NAME_COLOR = "#E8B47A";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const NAME_FONT<span class="Apple-converted-space">  </span>= "600 56px Tahoma, Arial, system-ui";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const NAME_X_ALIGN = "center";</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">  </span>// "مسافة شوي" تحت الكلام الأبيض:</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">  </span>// لو تبغى الاسم أعلى: 805 أو 800</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">  </span>// لو تبغى الاسم أوطى: 820 أو 830</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const NAME_Y = 810;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const canvas = document.getElementById("c");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ctx = canvas.getContext("2d");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const nameInput = document.getElementById("name");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const renderBtn = document.getElementById("renderBtn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const downloadBtn = document.getElementById("downloadBtn");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const img = new Image();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>img.crossOrigin = "anonymous";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>img.src = BASE_IMAGE_URL;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function drawBase() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.clearRect(0, 0, canvas.width, canvas.height);</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>// خلفية احتياطية</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.fillStyle = "#0b3f46";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.fillRect(0, 0, canvas.width, canvas.height);</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>// رسم الصورة "Cover" داخل 1024x1024</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const cw = canvas.width, ch = canvas.height;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const iw = img.naturalWidth || 1024;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ih = img.naturalHeight || 1024;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const scale = Math.max(cw / iw, ch / ih);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const nw = iw * scale;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const nh = ih * scale;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const x = (cw - nw) / 2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const y = (ch - nh) / 2;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.drawImage(img, x, y, nw, nh);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function drawName(name) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const safe = String(name || "").trim().slice(0, 28);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!safe) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.save();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.direction = "rtl";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.textAlign = NAME_X_ALIGN;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.textBaseline = "middle";</p>
+<p class="p2"><br></p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>// ظل خفيف للوضوح فوق الخلفية</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.shadowColor = "rgba(0,0,0,0.35)";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.shadowBlur = 6;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.fillStyle = NAME_COLOR;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.font = NAME_FONT;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const x = canvas.width / 2; // بالنص</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const y = NAME_Y; <span class="Apple-converted-space">          </span>// تحت الكلام الأبيض + مسافة شوي</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.fillText(safe, x, y);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.restore();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function render() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!img.complete) await new Promise(res =&gt; img.onload = res);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>drawBase();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>drawName(nameInput.value);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function downloadPNG() {</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">    </span>// ملاحظة: لو المصدر ما يسمح CORS ممكن يطلع خطأ (tainted canvas)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const a = document.createElement("a");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a.download = "ramadan-name.png";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a.href = canvas.toDataURL("image/png");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderBtn.addEventListener("click", render);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>downloadBtn.addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>downloadPNG();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>alert("تعذر حفظ الصورة بسبب قيود CORS من مصدر الصورة. قلّي وأجهز لك نسخة ترفع الصورة من جهازك وتشتغل 100%.");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.error(e);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>img.onload = render;</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
